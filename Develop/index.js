@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const generateReadMe = require('./utils/generateMarkdown');
 const fs = require('fs');
 
-const answers = () => {
+const questions = () => {
     return inquirer
     .prompt([
     {
@@ -122,12 +122,9 @@ const writeFile = data => {
         console.log("Your README has been successfully generated.")
     }
 })
-};
 
-questions()
-
-.then(answers => {
-    return generateReadMe(answers);
+.then(questions => {
+    return generateReadMe(questions);
 })
 .then(data => {
     return writeFile(data);
@@ -135,5 +132,4 @@ questions()
 .catch(err => {
     console.log(err)
 })
-
-init();
+};
